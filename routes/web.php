@@ -26,3 +26,5 @@ Route::post("deleteUser","HomeController@delete");
 Route::get("/files","FilesController@index");
 
 Route::post("guardarArchivo","FilesController@store");
+
+Route::post("deleteFile","FilesController@destroy");

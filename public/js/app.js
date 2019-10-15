@@ -49331,8 +49331,6 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49365,7 +49363,7 @@ var app = new Vue({
       prueba: "hello world"
     };
   },
-  methods: _defineProperty({
+  methods: {
     deleteUser: function deleteUser(id) {
       console.log("click click", id);
       window.axios.post("deleteUser", {
@@ -49377,19 +49375,20 @@ var app = new Vue({
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    deleteFile: function deleteFile(id) {
+      console.log("click click", id);
+      window.axios.post("deleteFile", {
+        id: id
+      }).then(function (response) {
+        if (response.data == "200") {
+          location.reload();
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
-  }, "deleteUser", function deleteUser(id) {
-    console.log("click click", id);
-    window.axios.post("deleteFile", {
-      id: id
-    }).then(function (response) {
-      if (response.data == "200") {
-        location.reload();
-      }
-    })["catch"](function (err) {
-      console.log(err);
-    });
-  })
+  }
 });
 
 /***/ }),

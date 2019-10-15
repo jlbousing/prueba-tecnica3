@@ -46,7 +46,6 @@ class FilesController extends Controller
 
         $nombre = $file->getClientOriginalName();
 
-        //$ruta = $request->file("file")->store("public");
         $file->move("storage",$nombre);
         $ruta = $nombre;
 
@@ -101,8 +100,10 @@ class FilesController extends Controller
      * @param  \App\files  $files
      * @return \Illuminate\Http\Response
      */
-    public function destroy(files $files)
+    public function destroy(Request $request)
     {
-        //
+          DB::table("files")->where("id_files",$request["id"])->delete();
+
+          return "200";
     }
 }

@@ -47,7 +47,7 @@ const app = new Vue({
                 console.log(err);
             });
         },
-        deleteUser(id){
+        deleteFile(id){
             console.log("click click",id);
             window.axios.post("deleteFile",{
                 id: id

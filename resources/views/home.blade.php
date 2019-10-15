@@ -48,7 +48,9 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-lg-12">
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#registarUsuario">Agregar usuario</button>
+                                @if(Auth::user()->fk_rol == 1)
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#registarUsuario">Agregar usuario</button>
+                                @endif
                             </div>
                         </div>
 
