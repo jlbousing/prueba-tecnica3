@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\files;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -14,7 +17,11 @@ class FilesController extends Controller
      */
     public function index()
     {
-        //
+        $files = DB::table("files")->get();
+
+        return view("files",[
+            "files" => $files
+        ]);
     }
 
     /**
@@ -35,7 +42,23 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file("file");
+
+        $nombre = $file->getClientOriginalName();
+
+        //$ruta = $request->file("file")->store("public");
+        $file->move("storage",$nombre);
+        $ruta = $nombre;
+
+        DB::table("files")->insert([
+            "titulo" => $request["titulo"],
+            "descripcion" => $request["descripcion"],
+            "file_url" => $ruta
+        ]);
+
+        return redirect("/files");
+
+
     }
 
     /**

@@ -46,6 +46,18 @@ const app = new Vue({
             }).catch((err) => {
                 console.log(err);
             });
+        },
+        deleteUser(id){
+            console.log("click click",id);
+            window.axios.post("deleteFile",{
+                id: id
+            }).then((response) => {
+                if(response.data == "200"){
+                    location.reload();
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
         }
     }
 });

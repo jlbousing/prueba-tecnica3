@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post("agregarUsuario","HomeController@addUser");
 
 Route::post("deleteUser","HomeController@delete");
+
+Route::get("/files","FilesController@index");
+
+Route::post("guardarArchivo","FilesController@store");
