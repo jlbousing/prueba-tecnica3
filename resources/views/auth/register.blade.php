@@ -26,6 +26,15 @@
                         </div>
 
                         <div class="form-group row">
+                            <label>Rol de usuario</label>
+                            <select class="form-control" name="user_rol">
+                                @foreach($roles as $item)
+                                    <option value="{{$item->id}}">{{$item->name_rol}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
