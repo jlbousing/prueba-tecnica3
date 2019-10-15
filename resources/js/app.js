@@ -33,5 +33,19 @@ const app = new Vue({
         return {
             prueba: "hello world"
         }
+    },
+    methods:{
+        deleteUser(id){
+            console.log("click click",id);
+            window.axios.post("deleteUser",{
+                id: id
+            }).then((response) => {
+                if(response.data == "200"){
+                    location.reload();
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
     }
 });

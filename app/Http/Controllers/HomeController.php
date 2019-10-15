@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $users = DB::table("users")->join("roles","roles.id","=","users.fk_rol")
+        $users = DB::table("users")->join("roles","roles.id_rol","=","users.fk_rol")
                 ->paginate(10);
 
         $roles = DB::table("roles")->get();
@@ -60,5 +60,11 @@ class HomeController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+    }
+
+    public function delete(Request $request){
+
+        User::where("id",$request["id"])->delete();
+        return "200";
     }
 }

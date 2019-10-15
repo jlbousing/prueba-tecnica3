@@ -34,7 +34,7 @@
                                     <td style="border: #1d2124 solid 3px">{{$user->name_rol}}</td>
 
                                     <td style="border: #1d2124 solid 3px">
-                                        <button class="btn btn-danger">Eliminar</button>
+                                        <button class="btn btn-danger" @click="deleteUser({{$user->id}})">Eliminar</button>
                                     </td>
 
                                 </tr>
@@ -90,7 +90,7 @@
                             <label>Rol de usuario</label>
                             <select class="form-control" name="user_rol">
                                 @foreach($roles as $item)
-                                    <option value="{{$item->id}}">{{$item->name_rol}}</option>
+                                    <option value="{{$item->id_rol}}">{{$item->name_rol}}</option>
                                 @endforeach
                             </select>
                         </div>

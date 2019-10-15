@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_rol');
             $table->string("name_rol");
             $table->timestamps();
         });
@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign("fk_rol")->references("id")->on("roles");
+            $table->foreign("fk_rol")->references("id_rol")->on("roles");
         });
     }
 
@@ -40,6 +40,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('roles');
         Schema::dropIfExists('users');
     }
 }

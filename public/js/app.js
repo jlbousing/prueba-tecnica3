@@ -49362,6 +49362,20 @@ var app = new Vue({
     return {
       prueba: "hello world"
     };
+  },
+  methods: {
+    deleteUser: function deleteUser(id) {
+      console.log("click click", id);
+      window.axios.post("deleteUser", {
+        id: id
+      }).then(function (response) {
+        if (response.data == "200") {
+          location.reload();
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
   }
 });
 
